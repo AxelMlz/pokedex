@@ -1,7 +1,7 @@
 # Website
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
-[Website available here!](https://pokedex-chi-eight-22.vercel.app)
+[Pokedex available here!](https://pokedex-chi-eight-22.vercel.app)
 
 
 ## Installation
