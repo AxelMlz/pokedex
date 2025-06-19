@@ -75,7 +75,7 @@ export default function List() {
                                 <div className="col col--2" key={pokemon.id}>
                                     <div className="pokemon-card" style={{ backgroundColor }}>
                                         <img src={pokemon.image} alt={pokemon.name} className="pokemon-img" />
-                                        <h1>{pokemon.name} - n°{pokemon.id}</h1>
+                                        <h1>{pokemon.name} #{pokemon.id}</h1>
                                     </div>
                                 </div>
                             );
@@ -86,30 +86,7 @@ export default function List() {
 
 
 
-            {/* <div className='container'>
-                {list.map((pokemon) => (
 
-                    <div className='item' key={pokemon.id}>
-
-                        <ol>
-
-                            <div class="row">
-                                <div class="col col--3" >
-                                    <div class="col-demo">
-                                    </div>
-                                    <img src={pokemon.image} alt={pokemon.name} />
-                                    <h1> {pokemon.name} - Number n°{pokemon.id}</h1>
-                                </div>
-
-
-                            </div>
-
-                        </ol>
-                    </div>
-                ))
-
-                }
-            </div> */}
 
         </Layout>
     )
