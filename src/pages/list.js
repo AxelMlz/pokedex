@@ -1,12 +1,11 @@
+
 import React, { useEffect, useState } from 'react'
 import Layout from '@theme/Layout';
 import { Card, CardFooter, Image, Button } from "@heroui/react";
 import ListCSS from "../css/list.css"
 export default function List() {
-
     const [list, setList] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-
     useEffect(() => {
         fetch(`https://pokebuildapi.fr/api/v1/pokemon/limit/800`)
             .then((res) => res.json())
@@ -15,7 +14,6 @@ export default function List() {
                 setIsLoaded(true);
             })
     }, [])
-
     if (!isLoaded) {
         return (
             <div>
@@ -23,21 +21,16 @@ export default function List() {
             </div>
         );
     }
-
     function Evolution(pokemon) {
         if (!pokemon.apiEvolutions[0]) {
-
         }
         //     return (
-
         // )
     };
-
     const chunkedList = [];
     for (let i = 0; i < list.length; i += 5) {
         chunkedList.push(list.slice(i, i + 5));
     }
-
     const typeColors = {
         Poison: "#A040A0",
         Plante: "#78C850",
@@ -59,29 +52,23 @@ export default function List() {
     };
 
 
-
     return (
         <Layout>
             <h1>List of Pokemons</h1>
-
-            <div className='container'>
-                {chunkedList.map((group, rowIndex) => (
-                    <div className="row" key={rowIndex}>
-                        {group.map((pokemon) => {
-                            const primaryType = pokemon.apiTypes?.[0]?.name || "Normal";
-                            const backgroundColor = typeColors[primaryType] || "#ddd";
-
-                            return (
-                                <div className="col col--2" key={pokemon.id}>
-                                    <div className="pokemon-card" style={{ backgroundColor }}>
-                                        <img src={pokemon.image} alt={pokemon.name} className="pokemon-img" />
-                                        <h1>{pokemon.name} #{pokemon.id}</h1>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                ))}
+            <div className="row">
+                {list.map((pokemon) => {
+                    const primaryType = pokemon.apiTypes?.[0]?.name || "Normal";
+                    const backgroundColor = typeColors[primaryType] || "#ddd";
+                    return (
+                        <div className="col col--2" key={pokemon.id}>
+                            <div className="pokemon-card" style={{ backgroundColor }}>
+                                <h2 className="pokemon-nbr">#{pokemon.id}</h2>
+                                <img src={pokemon.image} alt={pokemon.name} className="pokemon-img" />
+                                <h1>{pokemon.name}</h1>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
 
