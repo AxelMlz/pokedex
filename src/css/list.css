@@ -149,7 +149,9 @@ body.no-scroll {
 .type-Ténèbres { background-color: #705848; }
 .type-Acier { background-color: #B8B8D0; }
 .type-Fée { background-color: #EE99AC; }
+.type-Glace { background-color:rgb(140, 194, 233); }
 .type-Normal { background-color: #A8A878; }
+.type-Combat { background-color:rgb(179, 143, 113); }
 
 /* === RESPONSIVE === */
 @media (max-width: 480px) {
