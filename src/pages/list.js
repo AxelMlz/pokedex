@@ -9,7 +9,7 @@ export default function List() {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
 
     useEffect(() => {
-        fetch(`https://pokebuildapi.fr/api/v1/pokemon/limit/800`)
+        fetch(`https://pokebuildapi.fr/api/v1/pokemon`)
             .then((res) => res.json())
             .then((json) => {
                 setList(json);
