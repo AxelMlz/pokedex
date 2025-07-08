@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'AxelMlz', // Usually your GitHub org/user name.
+  projectName: 'pokedex', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -96,7 +96,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'right' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/AxelMlz',
             label: 'GitHub',
             position: 'right',
           },
@@ -134,13 +134,14 @@ const config = {
           {
             title: 'More',
             items: [
+
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/axel-melezan/',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/AxelMlz/pokedex',
               },
             ],
           },

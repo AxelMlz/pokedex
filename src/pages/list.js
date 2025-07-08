@@ -1,36 +1,30 @@
-
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
-import { Card, CardFooter, Image, Button } from "@heroui/react";
-import ListCSS from "../css/list.css"
+import PokemonOverlay from '../components/target-pokemon-overlay';
+import "../css/list.css";
+
 export default function List() {
     const [list, setList] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+
     useEffect(() => {
         fetch(`https://pokebuildapi.fr/api/v1/pokemon/limit/800`)
             .then((res) => res.json())
             .then((json) => {
                 setList(json);
                 setIsLoaded(true);
-            })
-    }, [])
-    if (!isLoaded) {
-        return (
-            <div>
-                <h1>Catching ongoing...</h1>
-            </div>
-        );
-    }
-    function Evolution(pokemon) {
-        if (!pokemon.apiEvolutions[0]) {
+            });
+    }, []);
+
+    useEffect(() => {
+        if (selectedPokemon) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
         }
-        //     return (
-        // )
-    };
-    const chunkedList = [];
-    for (let i = 0; i < list.length; i += 5) {
-        chunkedList.push(list.slice(i, i + 5));
-    }
+    }, [selectedPokemon]);
+
     const typeColors = {
         Poison: "#A040A0",
         Plante: "#78C850",
@@ -48,20 +42,27 @@ export default function List() {
         Ténèbres: "#705848",
         Acier: "#B8B8D0",
         Fée: "#EE99AC",
-        // Ajoutez d'autres types si besoin
     };
 
+    if (!isLoaded) {
+        return <div><h1>Catching ongoing...</h1></div>;
+    }
 
     return (
         <Layout>
             <h1>List of Pokemons</h1>
+
             <div className="row">
                 {list.map((pokemon) => {
                     const primaryType = pokemon.apiTypes?.[0]?.name || "Normal";
-                    const backgroundColor = typeColors[primaryType] || "#ddd";
+                    const typeClass = `type-${primaryType}`;
+
                     return (
                         <div className="col col--2" key={pokemon.id}>
-                            <div className="pokemon-card" style={{ backgroundColor }}>
+                            <div
+                                className={`pokemon-card ${typeClass}`}
+                                onClick={() => setSelectedPokemon(pokemon)}
+                            >
                                 <h2 className="pokemon-nbr">#{pokemon.id}</h2>
                                 <img src={pokemon.image} alt={pokemon.name} className="pokemon-img" />
                                 <h1>{pokemon.name}</h1>
@@ -71,12 +72,8 @@ export default function List() {
                 })}
             </div>
 
-
-
-
-
+            {/* Overlay rendu dans body */}
+            <PokemonOverlay pokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} />
         </Layout>
-    )
-};
-
-
+    );
+}

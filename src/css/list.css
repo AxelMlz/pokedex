@@ -1,3 +1,5 @@
+/* === LAYOUT DES CARTES === */
+
 
 .row {
   display: flex;
@@ -6,42 +8,162 @@
   gap: 2rem;
   padding: 1rem;
 }
+
 .col {
   flex: 1 1 160px;
   max-width: 200px;
 }
+
 .pokemon-card {
-    width: 14rem;              
-    height: 250px;             
-    border-radius: 12px;
-    padding: 1rem;
-    text-align: center;
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .pokemon-card:hover {
-    transform: scale(1.05);
-  }
-  
+  width: 14rem;
+  height: 250px;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
 .pokemon-img {
   width: 150px;
   height: 150px;
   object-fit: contain;
   margin: 0 auto;
 }
-  .pokemon-nbr {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 0.9rem;
-    background-color: rgba(0, 0, 0, 0.25);
-    padding: 4px 8px;
-    border-radius: 8px;
+
+.pokemon-nbr {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* === OVERLAY === */
+.overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden; /* 🔐 Empêche le scroll */
+}
+
+.overlay-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto; /* ← Garde le scroll interne si contenu dépasse */
+}
+
+
+.overlay-content img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 1rem auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+body.no-scroll {
+  overflow: hidden;
+}
+/* === TYPOGRAPHIE RESPONSIVE === */
+.overlay-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.overlay-content h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.overlay-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.overlay-content li {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+/* === TYPES DE COULEURS === */
+.type-Plante { background-color: #78C850; }
+.type-Feu { background-color: #F08030; }
+.type-Eau { background-color: #6890F0; }
+.type-Poison { background-color: #A040A0; }
+.type-Électrik { background-color: #F8D030; }
+.type-Insecte { background-color: #A8B820; }
+.type-Vol { background-color: #A890F0; }
+.type-Sol { background-color: #E0C068; }
+.type-Roche { background-color: #B8A038; }
+.type-Psy { background-color: #F85888; }
+.type-Spectre { background-color: #705898; }
+.type-Dragon { background-color: #7038F8; }
+.type-Ténèbres { background-color: #705848; }
+.type-Acier { background-color: #B8B8D0; }
+.type-Fée { background-color: #EE99AC; }
+.type-Normal { background-color: #A8A878; }
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .pokemon-card {
+    width: 90%;
+    height: auto;
+  }
+  .overlay-content {
+    padding: 1rem;
+  }
+  .overlay-content h2 {
+    font-size: 1.6rem;
+  }
+  .overlay-content h3 {
+    font-size: 1.2rem;
+  }
+}
