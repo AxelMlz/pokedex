@@ -73,7 +73,15 @@ export default function List() {
             </div>
 
             {/* Overlay rendu dans body */}
-            <PokemonOverlay pokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} />
+            {/* <PokemonOverlay pokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} /> */}
+            {selectedPokemon && (
+                <PokemonOverlay
+                    pokemon={selectedPokemon}
+                    onClose={() => setSelectedPokemon(null)}
+                    onSelectPokemon={setSelectedPokemon}
+                />
+            )}
+
         </Layout>
     );
 }

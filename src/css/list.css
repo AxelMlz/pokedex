@@ -86,6 +86,31 @@
   margin: 1rem auto;
 }
 
+.resistance-table {
+  width: 65%;              /* moins large que 100% */
+  max-width: 500px;        /* limite pour rester lisible */
+  margin: 1rem auto;       /* centre horizontalement */
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  text-align: center;      /* aligne tout le contenu au centre */
+}
+
+.resistance-table th,
+.resistance-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.resistance-table th {
+  background-color: #f4f4f4;
+  font-size: 1rem;
+}
+
+
+.resistance-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
 .close-button {
   position: absolute;
   top: 0.8rem;
