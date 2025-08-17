@@ -87,6 +87,7 @@ const config = {
           src: 'img/Poké_Ball_icon.svg.png',
         },
         items: [
+          { to: '/search', label: 'PokeSearch', position: 'left' },
           { to: '/list', label: 'PokeList', position: 'left' },
           {
             type: 'docSidebar',
